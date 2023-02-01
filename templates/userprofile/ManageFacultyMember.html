@@ -1,0 +1,214 @@
+{% extends 'userprofile/base.html' %}
+
+{% block title %} Add Faculty Member {% endblock title %}
+
+{% block body %} 
+ 
+<div class="card shadow-lg mx-4 card-profile-bottom addHeader">
+    <div class="card-body p-3"> 
+      <div class="row gx-4"> 
+        <div class="col-auto">
+          <div class="avatar avatar-xl position-relative">
+            <span class="w-100 border-radius-lg shadow-sm"> 
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 860" class="addicon"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M208 48c0 26.5-21.5 48-48 48s-48-21.5-48-48s21.5-48 48-48s48 21.5 48 48zM152 352V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V256.9L59.4 304.5c-9.1 15.1-28.8 20-43.9 10.9s-20-28.8-10.9-43.9l58.3-97c17.4-28.9 48.6-46.6 82.3-46.6h29.7c33.7 0 64.9 17.7 82.3 46.6l44.9 74.7c-16.1 17.6-28.6 38.5-36.6 61.5c-1.9-1.8-3.5-3.9-4.9-6.3L232 256.9V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V352H152zM432 512c-79.5 0-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144s-64.5 144-144 144zm16-208c0-8.8-7.2-16-16-16s-16 7.2-16 16v48H368c-8.8 0-16 7.2-16 16s7.2 16 16 16h48v48c0 8.8 7.2 16 16 16s16-7.2 16-16V384h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H448V304z"/></svg>
+            </span> 
+          </div>
+        </div>
+        <div class="col-auto my-auto">
+          <div class="h-100">
+            <h5 class="mb-1">
+              Faculty Member
+            </h5>
+            <p class="mb-0 font-weight-bold text-sm">
+              Add your faculty member here and see the details 
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 my-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add New Faculty Member
+          </button>
+        </div> 
+      </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Faculty Member Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/ManageFacultyMember" method="post"> 
+        {% csrf_token %} 
+        <div class="modal-body">
+          <div class="col-md-12">  
+            <div class="card">
+              <div class="card-body">
+                <p class="text-uppercase text-sm">Faculty Member Information</p>
+                <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Designation</label>
+                        <input class="form-control" type="text" name="designation" placeholder="Designation of the member">
+                      </div>
+                  </div>  
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="example-text-input" class="form-control-label">Name</label>
+                      <input class="form-control" type="text" name="name" placeholder="Faculty Member Name">
+                    </div>
+                  </div>                                  
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="example-text-input" class="form-control-label">Department</label>
+                      <input class="form-control" type="text" name="department" placeholder="Department of the member">
+                    </div>
+                  </div> 
+                </div>
+                <hr class="horizontal dark">
+                <p class="text-uppercase text-sm">Contact Information</p>
+                <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Phone</label>
+                        <input class="form-control" type="number" name="phone" placeholder="Phone number of the member">
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="example-text-input" class="form-control-label">Email Address</label>
+                      <input class="form-control" type="email" name="email_address" placeholder="Email Address of the member">
+                    </div>
+                  </div>                       
+                </div>                   
+              </div>
+          </div>        
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm " data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary btn-sm ">Add Faculty Member</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid py-4">
+    <div class="row">
+        {% comment %} <div class="col-md-12">
+          <form action="/ManageFacultyMember" method="post"> 
+            {% csrf_token %}         
+            <div class="card">
+                <div class="card-header pb-0">
+                  <div class="d-flex align-items-center">
+                    <p class="mb-0">Add Faculty Member</p>
+                    <button type="submit" class="btn btn-primary btn-sm ms-auto">Add Member</button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <p class="text-uppercase text-sm">Faculty Member Information</p>
+                  <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="example-text-input" class="form-control-label">Designation</label>
+                          <input class="form-control" type="text" name="designation" placeholder="Designation of the member">
+                        </div>
+                    </div>  
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Name</label>
+                        <input class="form-control" type="text" name="name" placeholder="Faculty Member Name">
+                      </div>
+                    </div>                                  
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Department</label>
+                        <input class="form-control" type="text" name="department" placeholder="Department of the member">
+                      </div>
+                    </div> 
+                  </div>
+                  <hr class="horizontal dark">
+                  <p class="text-uppercase text-sm">Contact Information</p>
+                  <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="example-text-input" class="form-control-label">Phone</label>
+                          <input class="form-control" type="number" name="phone" placeholder="Phone number of the member">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Email Address</label>
+                        <input class="form-control" type="email" name="email_address" placeholder="Email Address of the member">
+                      </div>
+                    </div>                       
+                  </div>                   
+                </div>
+            </div>
+          </form> 
+        </div> {% endcomment %}
+        <div class="col-md-12"> 
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                  <h6>Faculty Member Details In Tabular Form</h6>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                  <div class="table-responsive p-0">
+                    <table class="table table-hover align-items-center mb-0">
+                      <thead> 
+                        <tr>
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">SL No</th> 
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Designation</th>                          
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Name</th>
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Department</th>  
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Phone</th>  
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Email Address</th>  
+                          <th colspan="2" class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Actions</th>   
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for fm in fmember %}  
+                            <tr> 
+                                <td class="align-middle text-sm">
+                                <span class="text-secondary text-xs font-weight-bold mx-3">{{ fm.member_pk }}</span>
+                                </td>
+                                <td class="align-middle text-sm">
+                                <span class="text-secondary text-xs font-weight-bold">{{ fm.designation }}</span>
+                                </td> 
+                                <td class="align-middle  text-sm">
+                                <span class="badge badge-sm bg-gradient-success">{{ fm.name }}</span>
+                                </td>
+                                <td class="align-middle text-sm"> 
+                                <span class="text-secondary text-xs font-weight-bold">{{ fm.department }}</span>
+                                </td>
+                                <td class="align-middle  text-sm">
+                                <span class="text-secondary text-xs font-weight-bold">{{ fm.phone }}</span>
+                                </td>
+                                <td class="align-middle  text-sm">
+                                <span class="text-secondary text-xs font-weight-bold">{{ fm.email_address }}</span>
+                                </td>
+                                <td> 
+                                    <a href="" class="btn btn-warning btn-sm px-3 m-auto" style="color: #fff"> <i class="fas fa-eye"></i> </a>                                    
+                                </td>                                    
+                                <td> 
+                                    <form action="" method="post">  
+                                        {% csrf_token %} 
+                                        <button type="submit" class="btn btn-danger btn-sm px-3 m-auto"> <i class="fas fa-trash-alt"></i> </button>
+                                    </form> 
+                                </td>                         
+                            </tr>  
+                        {% endfor %}                                                   
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>         
+        </div>      
+    </div>     
+</div>    
+{% endblock body %}   

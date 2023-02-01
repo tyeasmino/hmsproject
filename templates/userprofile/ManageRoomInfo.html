@@ -1,0 +1,315 @@
+{% extends 'userprofile/base.html' %}
+
+{% block title %} Add Room Info {% endblock title %}
+
+{% block body %} 
+<div class="card shadow-lg mx-4 card-profile-bottom addHeader">
+    <div class="card-body p-3">
+      <div class="row gx-4"> 
+        <div class="col-auto d-none d-md-block">
+          <div class="avatar avatar-xl position-relative">
+            <span class="w-100 border-radius-lg shadow-sm"> 
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 860" class="addicon"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M543.8 287.6c17 0 32-14 32-32.1c1-9-3-17-11-24L309.5 7c-6-5-14-7-21-7s-15 1-22 8L10 231.5c-7 7-10 15-10 24c0 18 14 32.1 32 32.1h32V448c0 35.3 28.7 64 64 64H448.5c35.5 0 64.2-28.8 64-64.3l-.7-160.2h32zM256 208c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v48h48c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H320v48c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V320H208c-8.8 0-16-7.2-16-16V272c0-8.8 7.2-16 16-16h48V208z"/></svg>
+            </span> 
+          </div>
+        </div>
+        <div class="col-auto my-auto"> 
+          <div class="h-100">
+            <h5 class="mb-1">
+              Room Information
+            </h5>
+            <p class="mb-0 font-weight-bold text-sm">
+              Add your room information here and see the details 
+            </p> 
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 my-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add New Room 
+          </button> 
+        </div> 
+      </div>
+    </div>
+</div>
+ 
+<!-- Modal --> 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Room Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/ManageRoomInfo" method="post"> 
+        {% csrf_token %} 
+        <div class="modal-body">
+          <div class="col-md-12">  
+            <div class="card">
+                <div class="card-body"> 
+                  <p class="text-uppercase text-sm">Hall Information</p>
+                  <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="example-text-input" class="form-control-label">Hall Name</label>
+                          <select class="form-control" name="hall_name">  
+                              {% for hi in hallinfo %}   
+                                  <option value="{{ hi.hall_pk }} "> {{ hi.hall_id}} - {{ hi.name }} </option>   
+                              {% endfor %}   
+                          </select> 
+                        </div>
+                      </div>         
+                  </div>
+                  <hr class="horizontal dark">
+                  <p class="text-uppercase text-sm">Room Information</p>
+                  <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="example-text-input" class="form-control-label">Room No</label>
+                          <input class="form-control" type="text" value="" name="room_no" placeholder="Provide The Room No">
+                        </div>
+                    </div>  
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Room Capacity</label>
+                        <input class="form-control" type="number" name="room_capacity" placeholder="Provide The Room Capacity">
+                      </div>
+                    </div>                                  
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="example-text-input" class="form-control-label">Room Allotment</label>
+                          <input class="form-control" type="number" name="room_allotment"> 
+                        </div> 
+                    </div>                       
+                    {% comment %} <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="example-text-input" class="form-control-label">Empty Room</label>
+                          <input class="form-control" type="number" name="room_empty"> 
+                        </div> 
+                    </div>                        {% endcomment %}
+                    <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="example-text-input" class="form-control-label">Comment</label>
+                          <input class="form-control" type="text" name="comment" placeholder="Provide your comment here">  
+                        </div> 
+                    </div>                       
+                  </div>                                    
+                </div> 
+            </div>          
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm " data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary btn-sm ">Add Room</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-md-12">  
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                  <h6>Room Info Details In Tabular Form </h6> 
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                  <div class="table-responsive p-0"> 
+                    <table class="table table-hover align-items-center mb-0">   
+                      <thead> 
+                        <tr> 
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">SL No</th>  
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Hall Name</th>  
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ">Room No</th>                                  
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Capacity</th>
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Allotment</th>  
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Empty</th>   
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Comment</th>   
+                          <th colspan="2" class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Actions</th>   
+                        </tr>
+                      </thead>
+                      <tbody >
+                        {% for ri in roominfo %}  
+                            <tr > 
+                                <td class="align-middle text-sm"> 
+                                <span class="text-secondary text-xs font-weight-bold mx-3">{{ ri.room_pk }}</span>
+                                </td> 
+                                <td class="align-middle text-sm">
+                                <span class="text-secondary text-xs font-weight-bold">{{ ri.hall_name }}</span>
+                                </td>                                                                 
+                                <td class="text-sm">
+                                  <form action="{% url 'room_with_details' ri.room_pk %}" method="post">
+                                    {% csrf_token %} 
+                                    <input type="submit" class="btn btn-sm mb-0 text-secondary text-xs font-weight-bold" value="{{ ri.room_no }}">
+                                  </form> 
+                                  
+                                </td> 
+                                <td class="align-middle  text-sm"> 
+                                <span class="text-secondary text-xs font-weight-bold">{{ ri.room_capacity }}</span>
+                                </td>
+                                <td class="align-middle text-sm"> 
+                                <span class="text-secondary text-xs font-weight-bold">{{ ri.room_allotment }}</span>
+                                </td>
+                                <td class="align-middle  text-sm">
+                                <span class="text-secondary text-xs font-weight-bold">{{ ri.room_empty }}</span>
+                                </td>
+                                <td class="align-middle  text-sm">
+                                <span class="text-secondary text-xs font-weight-bold">{{ ri.comment }}</span>
+                                </td>
+                                <td> 
+                                    <a href="" class="btn btn-warning btn-sm px-3 m-auto"> <i class="fas fa-eye"></i> </a>                                    
+                                </td>                                     
+                                <td> 
+                                    <form action="" method="post"> 
+                                        {% csrf_token %} 
+                                        <button type="submit" class="btn btn-danger btn-sm px-3 m-auto"> <i class="fas fa-trash-alt"></i> </button>
+                                    </form> 
+                                </td>                         
+                            </tr>  
+                        {% endfor %}                                                   
+                      </tbody>
+                    </table>
+                  </div>
+                </div> 
+            </div>         
+        </div>   
+        
+        <div class="col-md-12">  
+          <div class="card mb-4">
+              <div class="card-header pb-0">
+                <h6> Room Details of <strong> {{ only_room_name }} </strong> In Tabular Form </h6> 
+                <button type="submit" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                  Modal View 
+                </button> 
+              </div>
+              <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0"> 
+                  <table class="table table-hover align-items-center mb-0">   
+                    <thead> 
+                      <tr> 
+                        <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">SL No</th>                            
+                        <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Student ID</th>                          
+                        <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Student Name</th>                          
+                        <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Balance</th>  
+                        <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Comment</th>   
+                        <th colspan="2" class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Actions</th>   
+                      </tr>
+                    </thead>
+                    <tbody >
+                      {% for rd in room_with_details %}  
+                          <tr > 
+                            <td class="align-middle text-sm"> 
+                            <span class="text-secondary text-xs font-weight-bold mx-3">{{ rd.room_details_pk }}</span>
+                            </td> 
+                            <td class="align-middle text-sm">
+                            <span class="text-secondary text-xs font-weight-bold">{{ rd.student_id }}</span>
+                            </td> 
+                            <td class="align-middle  text-sm">
+                            <span class="text-secondary text-xs font-weight-bold">{{ rd.student_name }}</span>
+                            </td>
+                            <td class="align-middle text-sm "> 
+                            <span class="text-secondary text-xs font-weight-bold">{{ rd.balance }}</span>
+                            </td>
+                            <td class="align-middle  text-sm">
+                            <span class="text-secondary text-xs font-weight-bold">{{ rd.comment }}</span>
+                            </td>
+                            <td> 
+                                <a href="" class="btn btn-warning btn-sm px-3 m-auto"> <i class="fas fa-eye"></i> </a>                                    
+                            </td>                                     
+                            <td> 
+                                <form action="" method="post"> 
+                                    {% csrf_token %} 
+                                    <button type="submit" class="btn btn-danger btn-sm px-3 m-auto"> <i class="fas fa-trash-alt"></i> </button>
+                                </form> 
+                            </td>                         
+                          </tr>                            
+                      {% endfor %}                                                   
+                    </tbody>
+                  </table>
+                </div>
+              </div> 
+          </div>         
+        </div> 
+    </div>     
+</div>    
+ 
+ 
+
+
+<!-- Modal of Room Details--> 
+<div class="modal fade " id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="false">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Room Details of <strong> {{ only_room_name }} </strong> </h5>
+      </div>      
+        <div class="modal-body">
+          <div class="col-md-12">  
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                  <h6> Room Details In Tabular Form </h6> 
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                  <div class="table-responsive p-0"> 
+                    <table class="table table-hover align-items-center mb-0">   
+                      <thead> 
+                        <tr> 
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">SL No</th>                            
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Student ID</th>                          
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Student Name</th>                          
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Balance</th>  
+                          <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Comment</th>   
+                          <th colspan="2" class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Actions</th>   
+                        </tr>
+                      </thead>
+                      <tbody >
+                        {% for rd in room_with_details %}  
+                            <tr > 
+                              <td class="align-middle text-sm"> 
+                              <span class="text-secondary text-xs font-weight-bold mx-3">{{ rd.room_details_pk }}</span>
+                              </td> 
+                              <td class="align-middle text-sm">
+                              <span class="text-secondary text-xs font-weight-bold">{{ rd.student_id }}</span>
+                              </td> 
+                              <td class="align-middle  text-sm">
+                              <span class="text-secondary text-xs font-weight-bold">{{ rd.student_name }}</span>
+                              </td>
+                              <td class="align-middle text-sm "> 
+                              <span class="text-secondary text-xs font-weight-bold">{{ rd.balance }}</span>
+                              </td>
+                              <td class="align-middle  text-sm">
+                              <span class="text-secondary text-xs font-weight-bold">{{ rd.comment }}</span>
+                              </td>
+                              <td> 
+                                  <a href="" class="btn btn-warning btn-sm px-3 m-auto"> <i class="fas fa-eye"></i> </a>                                    
+                              </td>                                     
+                              <td> 
+                                  <form action="" method="post"> 
+                                      {% csrf_token %} 
+                                      <button type="submit" class="btn btn-danger btn-sm px-3 m-auto"> <i class="fas fa-trash-alt"></i> </button>
+                                  </form> 
+                              </td>                         
+                            </tr>                            
+                        {% endfor %}                                                   
+                      </tbody>
+                    </table>
+                  </div>
+                </div> 
+            </div>         
+          </div>  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm " data-bs-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock body %}   
+
+{% block scriptblock %} 
+ 
+{% endblock scriptblock %}  

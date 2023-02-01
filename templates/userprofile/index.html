@@ -295,150 +295,58 @@
           </table>
         </div>
       </div>
-    </div>
+    </div>  
   </div>
 </div>
 
 <div class="row mt-4">
   <div class="col-lg-7 mb-lg-0 mb-4">
-    <div class="card ">
-      <div class="card-header pb-0 p-3">
-        <div class="d-flex justify-content-between">
-          <h6 class="mb-2">Sales by Country</h6>
+    <div class="card mb-4">
+      <div class="card-header pb-0">
+        <h6>Faculty Member Details In Tabular Form</h6>
+      </div>
+      <div class="card-body px-0 pt-0 pb-2">
+        <div class="table-responsive p-0">
+          <table class="table table-hover align-items-center mb-0">
+            <thead> 
+              <tr>
+                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">SL</th> 
+                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Designation</th>                          
+                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Name</th>
+                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Department</th>  
+                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Phone</th>  
+                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Email Address</th>  
+              </tr>
+            </thead>
+            <tbody>
+              {% for fm in fmember %}  
+                  <tr> 
+                      <td class="align-middle text-sm">
+                        <span class="text-secondary text-xs font-weight-bold mx-3">{{ fm.member_id }}</span>
+                      </td>
+                      <td class="align-middle text-sm">
+                        <span class="text-secondary text-xs font-weight-bold">{{ fm.designation }}</span>
+                      </td> 
+                      <td class="align-middle  text-sm">
+                        <span class="badge badge-sm bg-gradient-success">{{ fm.name }}</span>
+                      </td>
+                      <td class="align-middle text-sm"> 
+                        <span class="text-secondary text-xs font-weight-bold">{{ fm.department }}</span>
+                      </td>
+                      <td class="align-middle  text-sm">
+                        <span class="text-secondary text-xs font-weight-bold">{{ fm.phone }}</span>
+                      </td>
+                      <td class="align-middle  text-sm">
+                        <span class="text-secondary text-xs font-weight-bold">{{ fm.email_address }}</span>
+                      </td>                       
+                  </tr>  
+              {% endfor %}                                                   
+            </tbody>
+          </table>
         </div>
       </div>
-      <div class="table-responsive">
-        <table class="table align-items-center ">
-          <tbody>
-            <tr>
-              <td class="w-30">
-                <div class="d-flex px-2 py-1 align-items-center">
-                  <div>
-                    <img src="./assets/img/icons/flags/US.png" alt="Country flag">
-                  </div>
-                  <div class="ms-4">
-                    <p class="text-xs font-weight-bold mb-0">Country:</p>
-                    <h6 class="text-sm mb-0">United States</h6>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="text-center">
-                  <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                  <h6 class="text-sm mb-0">2500</h6>
-                </div>
-              </td>
-              <td>
-                <div class="text-center">
-                  <p class="text-xs font-weight-bold mb-0">Value:</p>
-                  <h6 class="text-sm mb-0">$230,900</h6>
-                </div>
-              </td>
-              <td class="align-middle text-sm">
-                <div class="col text-center">
-                  <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                  <h6 class="text-sm mb-0">29.9%</h6>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="w-30">
-                <div class="d-flex px-2 py-1 align-items-center">
-                  <div>
-                    <img src="./assets/img/icons/flags/DE.png" alt="Country flag">
-                  </div>
-                  <div class="ms-4">
-                    <p class="text-xs font-weight-bold mb-0">Country:</p>
-                    <h6 class="text-sm mb-0">Germany</h6>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="text-center">
-                  <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                  <h6 class="text-sm mb-0">3.900</h6>
-                </div>
-              </td>
-              <td>
-                <div class="text-center">
-                  <p class="text-xs font-weight-bold mb-0">Value:</p>
-                  <h6 class="text-sm mb-0">$440,000</h6>
-                </div>
-              </td>
-              <td class="align-middle text-sm">
-                <div class="col text-center">
-                  <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                  <h6 class="text-sm mb-0">40.22%</h6>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="w-30">
-                <div class="d-flex px-2 py-1 align-items-center">
-                  <div>
-                    <img src="./assets/img/icons/flags/GB.png" alt="Country flag">
-                  </div>
-                  <div class="ms-4">
-                    <p class="text-xs font-weight-bold mb-0">Country:</p>
-                    <h6 class="text-sm mb-0">Great Britain</h6>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="text-center">
-                  <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                  <h6 class="text-sm mb-0">1.400</h6>
-                </div>
-              </td>
-              <td>
-                <div class="text-center">
-                  <p class="text-xs font-weight-bold mb-0">Value:</p>
-                  <h6 class="text-sm mb-0">$190,700</h6>
-                </div>
-              </td>
-              <td class="align-middle text-sm">
-                <div class="col text-center">
-                  <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                  <h6 class="text-sm mb-0">23.44%</h6>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="w-30">
-                <div class="d-flex px-2 py-1 align-items-center">
-                  <div>
-                    <img src="./assets/img/icons/flags/BR.png" alt="Country flag">
-                  </div>
-                  <div class="ms-4">
-                    <p class="text-xs font-weight-bold mb-0">Country:</p>
-                    <h6 class="text-sm mb-0">Brasil</h6>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="text-center">
-                  <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                  <h6 class="text-sm mb-0">562</h6>
-                </div>
-              </td>
-              <td>
-                <div class="text-center">
-                  <p class="text-xs font-weight-bold mb-0">Value:</p>
-                  <h6 class="text-sm mb-0">$143,960</h6>
-                </div>
-              </td>
-              <td class="align-middle text-sm">
-                <div class="col text-center">
-                  <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                  <h6 class="text-sm mb-0">32.14%</h6>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+    </div>  
+  </div> 
   <div class="col-lg-5">
     <div class="card">
       <div class="card-header pb-0 p-3">
@@ -507,4 +415,197 @@
     </div>
   </div>
 </div> 
+
+<div class="row mt-4">
+  <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-header pb-0">
+        <h6>Halls Details In Tabular Form</h6>
+      </div>
+      <div class="card-body px-0 pt-0 pb-2">
+        <div class="table-responsive p-0">
+          <table class="table table-hover align-items-center mb-0">
+            <thead> 
+              <tr>
+                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">SL</th>
+                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Hall ID</th>
+                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Hall Name</th>
+                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Residence Type</th>  
+                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Provost Name</th>  
+                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Contact Email</th>  
+                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Starting Date</th>  
+                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">*</th>  
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr> 
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold mx-3">01</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">M01</span>
+                </td> 
+                <td class="align-middle  text-sm">
+                  <span class="badge badge-sm bg-gradient-success">Shaheed Aziz Hall</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Male</span>
+                </td>
+                <td class="align-middle  text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Dr. Md. Syduzzaman</span>
+                </td>
+                <td class="align-middle  text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">syduzzaman@butex.edu.bd</span>
+                </td>
+                <td class="align-middle   text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">25.04.2011</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Details</span>
+                </td>
+              </tr>
+              
+              <tr> 
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold mx-3">02</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">M02</span>
+                </td> 
+                <td class="align-middle text-sm">
+                  <span class="badge badge-sm bg-gradient-success">M A G Osmani Hall</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Male</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Dr. Samiul Islam</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">syduzzaman@butex.edu.bd</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">25.04.2011</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Details</span>
+                </td>
+              </tr>
+               
+              <tr> 
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold mx-3">03</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">M03</span>
+                </td> 
+                <td class="align-middle text-sm">
+                  <span class="badge badge-sm bg-gradient-success">Syed Nazrul Islam Hall</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Male</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Dr. Ahmed Jalal Uddin</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">syduzzaman@butex.edu.bd</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">25.04.2011</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Details</span>
+                </td>
+              </tr>
+              
+              <tr> 
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold mx-3">04</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">F01</span>
+                </td> 
+                <td class="align-middle text-sm">
+                  <span class="badge badge-sm bg-gradient-success">Sheikh Hasina Hall</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Female</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Dr. Hasina Akter</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">syduzzaman@butex.edu.bd</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">25.04.2011</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Details</span>
+                </td>
+              </tr>  
+
+              <tr> 
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold mx-3">03</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">M03</span>
+                </td> 
+                <td class="align-middle text-sm">
+                  <span class="badge badge-sm bg-gradient-success">Syed Nazrul Islam Hall</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Male</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Dr. Ahmed Jalal Uddin</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">syduzzaman@butex.edu.bd</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">25.04.2011</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Details</span>
+                </td>
+              </tr>
+              
+              <tr> 
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold mx-3">04</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">F01</span>
+                </td> 
+                <td class="align-middle text-sm">
+                  <span class="badge badge-sm bg-gradient-success">Sheikh Hasina Hall</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Female</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Dr. Hasina Akter</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">syduzzaman@butex.edu.bd</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">25.04.2011</span>
+                </td>
+                <td class="align-middle text-sm">
+                  <span class="text-secondary text-xs font-weight-bold">Details</span>
+                </td>
+              </tr> 
+               
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock body %}  
